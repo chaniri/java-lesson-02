@@ -9,20 +9,30 @@ public class ScoreAverage {
         System.out.printf("당신의 점수는 %.2f점 입니다.%n", score);
         System.out.printf("당신은 %s 등급 입니다.", estimateGrade(score));
     }
-    /**
-     * 해당 메서드는 다음과 같은 역할을 가져야 합니다 :
-     * 사용자가 0을 입력하기 전까지 계속해서 score에 숫자를 더해야 합니다.
-     * 사용자가 0을 입력할 경우, while문을 break해야 합니다.
-     */
-    private static double getAverageScore(Scanner scanner) {
-        int loop = 0;
-        int score = 0;
-        while (true) {
-            loop++;
-            throw new RuntimeException("이 코드 라인을 지우고, 이곳에서 작성하십시오.");
+/**
+ * 해당 메서드는 다음과 같은 역할을 가져야 합니다 :
+ * 사용자가 0을 입력하기 전까지 계속해서 score에 숫자를 더해야 합니다.
+ * 사용자가 0을 입력할 경우, while문을 break해야 합니다.
+ */
+private static double getAverageScore(Scanner scanner) {
+    int loop = 0;
+    int score = 0;
+    while (true) {
+        // 사용자로부터 다음 입력을 받습니다.
+        int nextValue = scanner.nextInt();
+        // 사용자가 0을 입력했을 경우, while문을 탈출합니다.
+        if (nextValue == 0) {
+            break;
         }
-        return ((double)score) / ((double)loop);
+        // 입력 값을 score에 더합니다.
+        score += nextValue;
+        // 반복 횟수를 증가시킵니다.
+        loop++;
     }
+    // 평균 점수를 계산하여 반환합니다.
+    return ((double) score) / loop;
+}
+
 
     /**
      * 해당 메서드는 다음과 같은 역할을 가져야 합니다 :
@@ -36,7 +46,15 @@ public class ScoreAverage {
      * @param averageScore 평균 점수
      */
     private static String estimateGrade(double averageScore) {
-        throw new RuntimeException("이 코드 라인을 지우고, 이곳에서 작성하십시오.");
+        if(score>=90)
+            return "A";
+        else if(score>=80)
+            return "B";
+        else if(score>=70)
+            return "C";
+        else
+            return "D";
+        
     }
 
 }
