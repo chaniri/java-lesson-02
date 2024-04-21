@@ -22,9 +22,10 @@ public class MultiplicationTableIteration {
     public static void main(String[] args) {
         // Random#nextInt(int)는 0부터 주어진 값까지(exclusive) 무작위의 숫자를 반환합니다.
         // 현재 조건에서는, 1단부터 9단까지 무작위로 조건을 주어야 합니다.
-        // 그러므로, 9를 파리미터로 사용하면 0부터 8까지의 무작위 값이 주어지고,
+        // 그러므로, 9를 파라미터로 사용하면 0부터 8까지의 무작위 값이 주어지고,
         // 이에 1을 더해 1에서 9 사이의 무작위 값을 생성할 수 있습니다.
-        loopMultiplicationTable(random.nextInt(9) + 1);
+        int first = random.nextInt(9) + 1;
+        loopMultiplicationTable(first);
         if (matchCounter == CHECK_COUNT) {
             System.out.println("정답입니다.");
         } else {
@@ -39,12 +40,10 @@ public class MultiplicationTableIteration {
      * @param first 구구단의 행
      */
     private static void loopMultiplicationTable(int first) {
-        // 아래 2줄은 힌트입니다.
-        // 아래에 제시된 2줄의 코드를 활용하여 코드를 작성해보세요.
-        // 힌트를 활용하지 않아도 구현은 가능합니다.
-        int row = 1;
-        matchMultiplicationTable(first, row, checkMultiplicationTable(first, row));
-        throw new RuntimeException("이 코드 라인을 지우고, 이곳에서 작성하십시오.");
+        for (int i = 1; i <= 9; i++) {
+            int result = checkMultiplicationTable(first, i);
+            matchMultiplicationTable(first, i, result);
+        }
     }
 
 
@@ -56,7 +55,7 @@ public class MultiplicationTableIteration {
      * @param second 구구단의 열
      */
     private static int checkMultiplicationTable(int first, int second) {
-        throw new RuntimeException("이 코드 라인을 지우고, 이곳에서 작성하십시오.");
+        return first * second;
     }
 
 
@@ -64,7 +63,7 @@ public class MultiplicationTableIteration {
      * 해당 메서드는 구구단의 행과 열을 받아 미리 선언된 값과 주어진 값을 비교하고,
      * 만약 주어진 값과 일치한다면 일치 횟수를 1 증가시킵니다.
      *
-     * @param first 구구단의 행
+     * @param first  구구단의 행
      * @param second 구구단의 열
      * @param result 비교할 값
      */
