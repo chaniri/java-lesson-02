@@ -36,9 +36,12 @@ public class DoWhileIteration {
      * 다음과 같은 제한을 가집니다 :
      * - do-while문을 반드시 이용해야 합니다.
      */
-    private static void checkValue() {
-        throw new RuntimeException("이 코드 라인을 지우고, 이곳에서 작성하십시오.");
+   private static void checkValue() {
+        do {
+            increaseValue();
+        } while (!stopGame());
     }
+
 
     public static boolean stopGame() {
         if (TARGET_VALUE <= currentValue)
